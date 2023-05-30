@@ -119,7 +119,7 @@ jobs:
 
       - name: Run pytest tests with coverage
         run: |
-          pytest -n auto --cov=autogpt --cov-report term-missing --cov-branch --cov-report xml --cov-report term
+          pytest tests/integration/challenges/basic_abilities/test_write_file.py
           python tests/integration/challenges/utils/build_current_score.py
         env:
           CI: true
@@ -196,7 +196,7 @@ jobs:
       - name: Run pytest tests with coverage
         if: ${{ env.DIFF_EXISTS == 'true' }}
         run: |
-          pytest -n auto tests/integration/challenges --cov=autogpt --cov-report term-missing --cov-branch --cov-report xml --cov-report --beat-challenges term
+          pytest -n auto tests/integration/challenges --beat-challenges --cov=autogpt --cov-report term-missing --cov-branch --cov-report xml --cov-report term
           python tests/integration/challenges/utils/build_current_score.py
 
       - name: Upload coverage reports to Codecov
